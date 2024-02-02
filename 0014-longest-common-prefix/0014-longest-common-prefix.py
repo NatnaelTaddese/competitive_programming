@@ -7,15 +7,21 @@ class Solution(object):
         result = ""
         smallest_word_length = len(strs[0])
 
-        for word in range(0,len(strs)):
-            if len(strs[word]) < smallest_word_length:
-                smallest_word_length = len(strs[word])
+        # pre-process the data:
+        # find the smallest word length
+        for word in strs:
+            if len(word) < smallest_word_length:
+                smallest_word_length = len(word)
 
-        for i in range(0, smallest_word_length):
-            key = (strs[0])[i]
+
+        # compare each letter
+        for letter in range(0, smallest_word_length):
+            
+            key = (strs[0])[letter] # inistializes the first words letter as the key and compare the others to this
             flag = True
+
             for word in strs:
-                if word[i] != key:
+                if word[letter] != key:
                     flag = False
                     break
             if flag:
