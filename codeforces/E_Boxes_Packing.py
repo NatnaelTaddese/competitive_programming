@@ -2,19 +2,16 @@
 n = int(input())
 boxes = list(map(int, input().split()))
 
-arrangement = dict()
+# arrangement = dict()
 
-for box in boxes:
-    if  box not in arrangement.keys():
-        arrangement[box] = 0
-        continue
-    for bigger_box in arrangement.keys():
-        if box < bigger_box and arrangement[bigger_box] == 0:
-            arrangement[bigger_box] += 1
-            break
-
-            
-
+# for box in boxes:
+#     if  box not in arrangement.keys():
+#         arrangement[box] = 0
+#         continue
+#     for bigger_box in arrangement.keys():
+#         if box < bigger_box and arrangement[bigger_box] == 0:
+#             arrangement[bigger_box] += 1
+#             break
 
 boxes = sorted(boxes, reverse=True)
 
@@ -42,19 +39,18 @@ boxes = sorted(boxes, reverse=True)
 
 # print(stack)
 
-# biggest = boxes[0]
-# freq = 0
-# current_freq = 0
+biggest = boxes[0]
+freq = 0
+current_freq = 0
 
-# for box in boxes:
-#     if box > biggest:
-#         biggest = box
-#         current_freq = 1
-#     elif box == biggest:
-#         current_freq += 1
-#     else:
-#         current_freq = 1  
-#     if current_freq > freq:
-#         freq = current_freq
+for box in boxes:
+    if box < biggest:
+        biggest = box
+        current_freq = 1
+    else:
+        current_freq += 1
+      
+    if current_freq > freq:
+        freq = current_freq
 
-# print(freq)
+print(freq)
