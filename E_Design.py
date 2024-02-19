@@ -89,30 +89,39 @@
 n, q = map(int, input().split())
 
 words = [input() for _ in range(n)]
-queries = [input().split() for _ in range(q)]
+queries = list(input().split() for _ in range(q))
+
 
 def suff_pre(query):
     index = -1
     
     for i in range(n):
         pre = True
-        post = True
+        suff = True
         
-        # Check if the prefix of query[0] matches the prefix of words[i]
+        # if the query is longer than the word, it skips it
+        if len(words[i]) < len(query[0]) or  len(words[i]) < len(query[1]):
+            continue
+        
+        
+        # Check if query[0] matches the first words of words[i]
         for j in range(len(query[0])):
             if query[0][j] != words[i][j]:
                 pre = False
                 break
         
-        # Check if the suffix of query[1] matches the suffix of words[i]
-        for j in range(len(query[1])):
-            if query[1][j] != words[i][-len(query[1]) + j]:
-                post = False
+        # if not pre:
+        #     break
+
+        # Check if  query[1] matches the last words of words[i]
+        length = len(query[1])
+        for j in range(length):
+            if query[1][(length - 1) - j] != words[i][len(words[i]) - 1 - j]:
+                suff = False
                 break
  
-        if pre and post:
-            if index < i:
-                index = i  
+        if pre and suff:
+            index = i  
  
     return index
 
