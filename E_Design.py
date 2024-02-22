@@ -88,7 +88,8 @@
 
 n, q = map(int, input().split())
 
-words = [input() for _ in range(n)]
+# words = [input() for _ in range(n)]
+words = list(input().split())
 queries = list(input().split() for _ in range(q))
 
 
@@ -110,8 +111,8 @@ def suff_pre(query):
                 pre = False
                 break
         
-        # if not pre:
-        #     break
+        if not pre:
+            continue
 
         # Check if  query[1] matches the last words of words[i]
         length = len(query[1])
