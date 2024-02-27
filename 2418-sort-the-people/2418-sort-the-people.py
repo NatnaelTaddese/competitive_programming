@@ -5,9 +5,10 @@ class Solution(object):
         :type heights: List[int]
         :rtype: List[str]
         """
+        # using bubble sort
         for i in range(len(heights)):
-
             swapped = False
+
             for j in range(0, len(heights) - i - 1):
                 if heights[j] < heights[j + 1]:
                     names[j], names[j+1] = names[j+1], names[j]
