@@ -5,6 +5,7 @@ negative = []
 positive = []
 prod_zero = []
 
+# pre - proccess
 for num in numbers:
     if num == 0:
         prod_zero.append(num)
@@ -15,18 +16,20 @@ for num in numbers:
 
 for num in negative:
     if len(negative) >= 3 and len(positive) == 0:
+        # donate two negative numbers to positive
         positive.append(negative.pop())
         positive.append(negative.pop())
+        
     if len(negative) % 2 == 0:
         prod_zero.append(negative.pop())
 
 
+# display the result
 print(len(negative), end= " ")
 for num in negative:
     print(num, end= " ")
 
 print(end="\n")
-
 
 print(len(positive), end= " ")
 for num in positive:
