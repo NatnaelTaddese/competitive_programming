@@ -29,31 +29,32 @@
 
 
 
-for _ in range(int(input())):
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
+# for _ in range(int(input())):
 
-    difference = 0
+#     n, m = map(int, input().split())
+#     a = list(map(int, input().split()))
+#     b = list(map(int, input().split()))
 
-    a.sort()
-    b.sort()
+#     difference = 0
 
-    if n == 1:
-        print(abs(a[0] - b[-1]))
-        continue
+#     a.sort()
+#     b.sort()
 
-    j = m - 1
-    for i in range((len(a) // 2) - 1, -1, -1):
-        difference += abs(a[i] - b[j])
-        j -= 1
+#     if n == 1:
+#         print(abs(a[0] - b[-1]))
+#         continue
 
-    j = 0
-    for i in range(len(a) // 2, len(a)):
-        difference += abs(a[i] - b[j])
-        j += 1
+#     j = m - 1
+#     for i in range((len(a) // 2) - 1, -1, -1):
+#         difference += abs(a[i] - b[j])
+#         j -= 1
 
-    print(difference)
+#     j = 0
+#     for i in range(len(a) // 2, len(a)):
+#         difference += abs(a[i] - b[j])
+#         j += 1
+
+#     print(difference)
 
 
     # 6 1 2 4
@@ -74,3 +75,30 @@ for _ in range(int(input())):
 
 # 1 2 3 4 5
 
+
+for _ in range(int(input())):
+    n , m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    result = 0
+    a.sort()
+    b.sort(reverse=True)
+    
+    i = 0
+    j = m - 1
+    k = n - 1
+    for _ in range(n):
+
+        totall = abs(a[k] - b[j])
+        total2 = abs(a[i] - b[i])
+
+        if totall < total2:
+            i += 1
+        else:
+            j -= 1
+            k -= 1
+
+        result += max(totall, total2)
+
+    print(result)
