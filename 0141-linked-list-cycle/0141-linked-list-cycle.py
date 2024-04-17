@@ -10,16 +10,28 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-        seen = dict()
+        # seen = dict()
 
-        curr = head
+        # curr = head
 
-        while curr:
-            if curr in seen:
-                return True
+        # while curr:
+        #     if curr in seen:
+        #         return True
             
-            seen[curr] = 1
-            curr = curr.next
+        #     seen[curr] = 1
+        #     curr = curr.next
+        
+        # return False
+
+        tort = head
+        rabbit = head
+
+        while rabbit and rabbit.next:
+            tort = tort.next
+            rabbit = rabbit.next.next
+
+            if rabbit == tort:
+                return True
         
         return False
         
