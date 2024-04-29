@@ -21,6 +21,9 @@ while left < n:
             right += 1
             if height[left] == width:
                 max_width = max(max_width, width)
+                # print(height[left:right])
+                # print(height[left], width)
+
                 break
         else:
             break
