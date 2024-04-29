@@ -37,7 +37,8 @@ while left < n:
     left = right
 
 
-# trying sliding window instead...
+# trying sliding window instead.....
+
 # for i in range(n):
 #     width = 1
 #     # Traverse leftwards from the current bar
