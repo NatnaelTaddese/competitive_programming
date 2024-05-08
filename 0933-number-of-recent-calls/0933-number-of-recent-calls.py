@@ -11,9 +11,12 @@ class RecentCounter(object):
         :rtype: int
         """
         self.queue.append(t)
+        self.counter += 1
         while (t - self.queue[0]) > 3000:
             self.queue.pop(0)
-        return len(self.queue)
+            self.counter -= 1
+
+        return self.counter
         
 
 
