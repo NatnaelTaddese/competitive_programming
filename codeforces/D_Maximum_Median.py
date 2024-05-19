@@ -17,33 +17,55 @@
 
 '''
 
+# n, k = map(int, input().split())
+# a = list(map(int, input().split()))
+
+# a.sort()
+
+# median = (n // 2)
+
+
+# while k > 0:
+#     if a[median + 1] - a[median] > 0:
+#         a[median] += (a[median + 1] - a[median])
+#         k -= (a[median + 1] - a[median])
+#         continue
+#     else:
+#         # break
+#         # find the difference between the next greater and the greater
+
+#         greater = median + 1
+#         next_greater = median + 2
+#         while(next_greater < n and k ):
+#             if a[next_greater] > a[greater]:
+#                 #
+
+    
+#     # find next greater
+#     # todo
+
+# print(a[median])
+
+
 n, k = map(int, input().split())
 a = list(map(int, input().split()))
 
 a.sort()
 
-median = (n // 2)
+median_index = n // 2
+median_value = a[median_index]
 
-
-while k > 0:
-    if a[median + 1] - a[median] > 0:
-        a[median] += (a[median + 1] - a[median])
-        k -= (a[median + 1] - a[median])
-        continue
+for i in range(median_index, n-1):
+    diff = a[i+1] - a[i]
+    required_operations = diff * (i - median_index + 1)
+    if k >= required_operations:
+        k -= required_operations
+        median_value = a[i+1]
     else:
-        # break
-        # find the difference between the next greater and the greater
+        median_value += k // (i - median_index + 1)
+        break
 
-        greater = median + 1
-        next_greater = median + 2
-        while(next_greater < n and k ):
-            if a[next_greater] > a[greater]:
-                #
+if k > 0:
+    median_value += k // (n - median_index)
 
-    
-    # find next greater
-    # todo
-
-print(a[median])
-
-
+print(median_value)
