@@ -1,16 +1,21 @@
 
-def backtrack(arr, target):
+seen= set()
+
+def backtrack(arr):
 
     
-    if sum(arr) == target:
-        return True
     
-    if max(arr) == min(arr):
+    mn = min(arr)
+    mx = max(arr)
+
+    seen.add(sum(arr))
+    
+    if mx == mn:
         return False
 
 
     
-    mid = (max(arr) + min(arr)) // 2
+    mid = (mx + mn) // 2
 
     left = []
     right = []
@@ -23,13 +28,10 @@ def backtrack(arr, target):
 
 
 
-    if backtrack(left, target):
-        return True
+    backtrack(left)
     
-    if backtrack(right, target):
-        return True
+    backtrack(right)
 
-    return False
 
 
 for _ in range(int(input())):
@@ -37,10 +39,13 @@ for _ in range(int(input())):
 
     a = list(map(int,input().split()))
 
+    seen.clear()
+
+    backtrack(a)
+
     for _ in range(q):
         s = int(input())
-        res = backtrack(a,s)
-        if res:
+        if s in seen:
             print("Yes")
         else:
             print("No")
