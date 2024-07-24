@@ -24,16 +24,20 @@ class Solution(object):
 
         # return min_heap
         result = []
+        # print(min_heap)
+
         # for i in range(k):
             # result.append([min_heap[i][1],min_heap[i][2]])
         while min_heap and len(result) < k:
             sm, i, j = heappop(min_heap)
+            # print(nums1[i],nums2[j])
             result.append([nums1[i],nums2[j]])
-            # if we go out of bound.
+            
+
             if j < len(nums2) - 1:
                 heappush(min_heap,(nums1[i] + nums2[j + 1], i, j + 1) )
+                # print("pushed: ",min_heap)
+
         
-        
-        print(min_heap)
 
         return result
