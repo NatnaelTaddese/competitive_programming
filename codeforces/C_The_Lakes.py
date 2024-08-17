@@ -34,6 +34,10 @@ for _ in range(int(input())):
 
     # for _ in range(n):
     #     row = list(map(int, input().split()))
+    mx = 0
+    for i in range(n):
+        for j in range(m):
+            
     print(bfs(n,m,matrix,(0,0)))
     
 
