@@ -4,84 +4,41 @@ class Solution(object):
         :type n: int
         :rtype: List[List[str]]
         """
-
-        """
-        [".Q..",
-         "...Q",
-         "Q...",
-         "..Q."]
-
-        """
-
-    
-
-        board = [['.'] * n for _ in range(n)]
-        result = []
-
-        def helper(row, col):
-            if "Q" in board[row]:
-                return False
-            
-            for i in range(n):
-                if board[i][col] == "Q":
+        def is_valid(board, row, col):
+            for i in range(row):
+                if board[i][col] == 'Q':
                     return False
-
-            # explore diagonal up/down
-            i, j = row, col
-
-            while(0 <= i < n and 0 <= j < n):
-                if board[i][j] == "Q":
-                    return False
-                i += 1
-                j += 1
             
             i, j = row, col
-            while(0 <= i < n and 0 <= j < n):
-                if board[i][j] == "Q":
-                    return False
-                i -= 1
-                j += 1
-            
-            i, j = row, col
-            while(0 <= i < n and 0 <= j < n):
-                if board[i][j] == "Q":
-                    return False
-                i += 1
-                j -= 1
-            
-            i, j = row, col
-            while(0 <= i < n and 0 <= j < n):
-                if board[i][j] == "Q":
+            while i >= 0 and j >= 0:
+                if board[i][j] == 'Q':
                     return False
                 i -= 1
                 j -= 1
+            
+            i, j = row, col
+            while i >= 0 and j < n:
+                if board[i][j] == 'Q':
+                    return False
+                i -= 1
+                j += 1
             
             return True
-            
 
         def backtrack(row):
             if row == n:
-
-                result.append(list("".join(r) for r in board))
+                solution = [''.join(row) for row in board]
+                solutions.append(solution)
                 return
             
             for col in range(n):
-                if helper(row,col):
-                    board[row][col] = "Q"
-
+                if is_valid(board, row, col):
+                    board[row][col] = 'Q'
                     backtrack(row + 1)
+                    board[row][col] = '.'
 
-                    board[row][col] = "."
-
+        solutions = []
+        board = [['.'] * n for _ in range(n)]
 
         backtrack(0)
-
-        return result
-                
-
-
-
-            
-        
-
-        
+        return solutions
