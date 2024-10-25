@@ -20,6 +20,7 @@ def can_bake(x):
         if k_needed > k:
             return False
     return True
+    
 
 
 left = mn
