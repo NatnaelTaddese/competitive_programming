@@ -26,7 +26,7 @@ class MapSum:
         self.seen[word] = temp
         
     def search(self, word: str) -> bool:
-        # your code goes here
+
         curr = self.root
         for c in word:
             index = ord(c) - ord('a')
